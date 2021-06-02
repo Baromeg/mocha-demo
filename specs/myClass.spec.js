@@ -8,7 +8,7 @@ let expect = chai.expect
 let sinon = require('sinon')
 
 // Test suit - Using describe block
-describe('Test suit', () => {
+describe.skip('Test suit', () => {
   // It block - Test Case
   it('Test the add method', () => {
     expect(myObj.add(1, 2)).to.be.equal(3)
@@ -40,5 +40,19 @@ describe('Test suit', () => {
     expectation.withArgs('Hello World')
     myObj.callAnotherFn(10, 20)
     mock.verify()
+  })
+
+  // Stubs
+})
+
+// Stub - Overwrites the actual function with an assumption.
+describe('Test suit for stub', () => {
+  // It block - Test Case
+  it('Stub the add method', () => {
+    let stub = sinon.stub(myObj, 'add')
+    // Assumes 100 is the result
+    stub.withArgs(10, 20).onFirstCall().returns(100).onSecondCall().returns(200)
+    expect(myObj.callAnotherFn(10, 20)).to.be.equal(100)
+    expect(myObj.callAnotherFn(10, 20)).to.be.equal(2000)
   })
 })
