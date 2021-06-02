@@ -4,7 +4,7 @@ let myObj = new MyClass()
 // Assertion library Chai
 let chai = require('chai')
 let expect = chai.expect
-// Spy library Sinon
+// Spy library Sinon - It creates a wrapper around these methods to track its activity
 let sinon = require('sinon')
 
 // Test suit - Using describe block
@@ -22,5 +22,11 @@ describe('Test suit', () => {
     // sinon.assert.calledTwice(spy)
     expect(spy.calledOnce).to.be.true
     expect(spy.calledWith(arg1, arg2)).to.be.true
+  })
+  // Spy on a dummy callback
+  it('Spy the callback method', () => {
+    let callback = sinon.spy()
+    myObj.callTheCallback(callback)
+    expect(callback.calledOnce).to.be.true
   })
 })

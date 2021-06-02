@@ -14,6 +14,10 @@ class MyClass {
     let result = this.add(arg1, arg2)
     return result
   }
+
+  callTheCallback(callback) {
+    callback()
+  }
 }
 // 3 - Export Class
 module.exports = MyClass
