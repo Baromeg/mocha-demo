@@ -9,6 +9,11 @@ class MyClass {
     result = arg1 + arg2
     return result
   }
+
+  callAnotherFn(arg1, arg2) {
+    let result = this.add(arg1, arg2)
+    return result
+  }
 }
 // 3 - Export Class
 module.exports = MyClass
