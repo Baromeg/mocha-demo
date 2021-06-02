@@ -10,12 +10,12 @@ class MyClass {
     return result
   }
 
-  sayHello() {
-    console.log('Hello')
+  sayHello(str) {
+    console.log(str)
   }
 
   callAnotherFn(arg1, arg2) {
-    this.sayHello()
+    this.sayHello('Hello World')
     let result = this.add(arg1, arg2)
     return result
   }

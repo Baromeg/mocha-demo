@@ -37,6 +37,7 @@ describe('Test suit', () => {
     let mock = sinon.mock(myObj)
     let expectation = mock.expects('sayHello')
     expectation.exactly(1)
+    expectation.withArgs('Hello World')
     myObj.callAnotherFn(10, 20)
     mock.verify()
   })
