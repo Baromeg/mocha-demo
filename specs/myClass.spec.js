@@ -3,6 +3,9 @@ let MyClass = require('../src/myClass')
 let myObj = new MyClass()
 // Assertion library Chai
 let chai = require('chai')
+// Chai package to work with promises
+let chaiaspromise = require('chai-as-promised')
+chai.use(chaiaspromise)
 let expect = chai.expect
 // Spy library Sinon - It creates a wrapper around these methods to track its activity
 let sinon = require('sinon')
@@ -58,7 +61,7 @@ describe.skip('Test suit for stub', () => {
 })
 
 // Promise Testing without Chai
-describe('Test the promise', () => {
+describe.skip('Test the promise', () => {
   // It block - Test Case
   it('Promise test case', function (done) {
     // timeout = 0 => Waits until the promise is completed, otherwise add seconds
@@ -71,5 +74,15 @@ describe('Test the promise', () => {
         done()
       })
       .catch(done)
+  })
+})
+
+// Promise Testing without Chai
+describe('Test the promise with chai as promise', () => {
+  // It block - Test Case
+  it('Promise test case', function () {
+    // timeout = 0 => Waits until the promise is completed, otherwise add seconds
+    this.timeout(0)
+    return expect(myObj.testPromise()).to.eventually.equal(6)
   })
 })
