@@ -46,7 +46,7 @@ describe.skip('Test suit', () => {
 })
 
 // Stub - Overwrites the actual function with an assumption.
-describe('Test suit for stub', () => {
+describe.skip('Test suit for stub', () => {
   // It block - Test Case
   it('Stub the add method', () => {
     let stub = sinon.stub(myObj, 'add')
@@ -54,5 +54,22 @@ describe('Test suit for stub', () => {
     stub.withArgs(10, 20).onFirstCall().returns(100).onSecondCall().returns(200)
     expect(myObj.callAnotherFn(10, 20)).to.be.equal(100)
     expect(myObj.callAnotherFn(10, 20)).to.be.equal(2000)
+  })
+})
+
+// Promise Testing without Chai
+describe('Test the promise', () => {
+  // It block - Test Case
+  it('Promise test case', function (done) {
+    // timeout = 0 => Waits until the promise is completed, otherwise add seconds
+    this.timeout(0)
+    myObj
+      .testPromise()
+      .then(function (result) {
+        expect(result).to.be.equal(6)
+        expect(false).to.be.false
+        done()
+      })
+      .catch(done)
   })
 })
